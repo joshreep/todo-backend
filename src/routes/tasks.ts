@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
     try {
         const task = await prisma.task.create({
             data: {
+                // don't worry about sanitizing input any further.  Prisma will handle type mismatches and stuff.
                 title: req.body.title,
                 color: req.body.color,
                 completed: req.body.completed,

@@ -9,6 +9,6 @@ export function getStatusCodeFromError(error: unknown) {
 export function getErrorMessageFromError(error: unknown) {
     if (error instanceof PrismaClientValidationError) return error.message
     if (error instanceof PrismaClientKnownRequestError) return error.meta?.cause
-    else return 'Something went wrong with the request'
+    else return 'Something went wrong'
 }
 
