@@ -1,10 +1,9 @@
 import { PrismaClient } from '@prisma/client'
 import express from 'express'
 import { getErrorMessageFromError, getStatusCodeFromError } from '../utils/error-handling'
+import prisma from '../client'
 
 const router = express.Router()
-
-const prisma = new PrismaClient()
 
 router.get('/', async (req, res) => {
     try {
@@ -44,7 +43,6 @@ router.put('/:id', async (req, res) => {
                 completed: req.body.completed
             }
         })
-        res.status(200)
         res.send(task)
     } catch (error) {
         res.status(getStatusCodeFromError(error))
@@ -57,7 +55,6 @@ router.delete('/:id', async (req, res) => {
         const task = await prisma.task.delete({
             where: { id: +req.params.id }
         })
-        res.status(200)
         res.send(task)
     } catch (error) {
         res.status(getStatusCodeFromError(error))
