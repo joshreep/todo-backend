@@ -1,0 +1,28 @@
+{
+  "name": "todo-backend",
+  "version": "1.0.0",
+  "description": "A todo api backend utilizing Express.js, Prisma ORM, and MySQL",
+  "main": "dist/index.js",
+  "repository": "git@github.com:joshreep/todo-backend.git",
+  "author": "joshreep@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.0.1",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "nodemon": "^3.1.7",
+    "prisma": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
