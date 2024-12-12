@@ -23,7 +23,7 @@ You can use any MySQL db that you want. I chose to just spin up a docker contain
    ```bash
    docker run -d --rm -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=todo --name prisma_db -p 3307:3306 mysql:8.0
    ```
-1. Add an environment variable for docker container or other db endpoint of your choosing
+1. Add an environment variable in `.env` file for docker container or other db endpoint of your choosing
    ```conf
    DATABASE_URL="mysql://root:secret@localhost:3307/todo"
    ```
