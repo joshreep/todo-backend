@@ -1,5 +1,7 @@
 # Todo Backend
 
+This is an API service built using Express, Prisma ORM, and MySQL.  The matching frontend can be found [here](https://github.com/joshreep/todo-frontend)
+
 ## Getting Started
 
 In order to get the backend service running locally, you'll need to do a few things
