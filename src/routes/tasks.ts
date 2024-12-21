@@ -4,6 +4,7 @@ import {
   getStatusCodeFromError,
 } from '../utils/error-handling';
 import prisma from '../client';
+import Fuse from 'fuse.js';
 
 const router = express.Router();
 
@@ -76,6 +77,18 @@ router.delete('/:id', async (req, res) => {
       where: { id: +req.params.id },
     });
     res.send(task);
+  } catch (error) {
+    res.status(getStatusCodeFromError(error));
+    res.send({ message: getErrorMessageFromError(error), error });
+  }
+});
+
+router.get('/search/:term', async (req, res) => {
+  try {
+    const allTodos = await prisma.task.findMany({});
+    const fuse = new Fuse(allTodos, { includeScore: true, keys: ['title'] });
+
+    res.send(fuse.search(req.params.term));
   } catch (error) {
     res.status(getStatusCodeFromError(error));
     res.send({ message: getErrorMessageFromError(error), error });

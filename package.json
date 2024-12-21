@@ -10,11 +10,15 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "create:db": "docker run -d --rm -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=todo --name prisma_db -p 3307:3306 mysql:8.0",
+    "start:db": "docker start prisma_db",
+    "migrate:up": "yarn prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^6.0.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "fuse.js": "^7.0.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
